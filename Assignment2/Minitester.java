@@ -1321,6 +1321,138 @@ class Part2Test {
         test.clear();
         assertTrue(test.isEmpty());
     }
+    
+    @Test
+    public void testCase1() {
+        actionQueue.loadFromEncodedString("3[N]");
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertTrue(actionQueue.isEmpty());
+    }
+    @Test
+    public void testCase2() {
+        actionQueue.loadFromEncodedString("2[N]3[W]");
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertTrue(actionQueue.isEmpty());
+    }
+
+    @Test
+    public void testCase3() {
+        actionQueue.loadFromEncodedString("3[NE]");
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertTrue(actionQueue.isEmpty());
+    }
+
+    @Test
+    public void testCase4() {
+        actionQueue.loadFromEncodedString("3[2[N]2[E]]1[S]");
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertTrue(actionQueue.isEmpty());
+    }
+
+    @Test
+    public void testCase10() {
+        actionQueue.loadFromEncodedString("2[NE]3[WS]");
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertTrue(actionQueue.isEmpty());
+    }
+
+    @Test
+    public void testCase11() {
+        actionQueue.loadFromEncodedString("3[2[2[NW]S]2[2[E]]]1[2[3[S]]]4[W2[N]]");
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.EAST, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.SOUTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.WEST, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertEquals(Direction.NORTH, actionQueue.dequeue());
+        assertTrue(actionQueue.isEmpty());
+    }
 }
 
 class Part3Test {
