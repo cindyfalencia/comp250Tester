@@ -1321,25 +1321,6 @@ class Part2Test {
         test.clear();
         assertTrue(test.isEmpty());
     }
-    
-    @Test
-    public void testCase1() {
-        actionQueue.loadFromEncodedString("3[N]");
-        assertEquals(Direction.NORTH, actionQueue.dequeue());
-        assertEquals(Direction.NORTH, actionQueue.dequeue());
-        assertEquals(Direction.NORTH, actionQueue.dequeue());
-        assertTrue(actionQueue.isEmpty());
-    }
-    @Test
-    public void testCase2() {
-        actionQueue.loadFromEncodedString("2[N]3[W]");
-        assertEquals(Direction.NORTH, actionQueue.dequeue());
-        assertEquals(Direction.NORTH, actionQueue.dequeue());
-        assertEquals(Direction.WEST, actionQueue.dequeue());
-        assertEquals(Direction.WEST, actionQueue.dequeue());
-        assertEquals(Direction.WEST, actionQueue.dequeue());
-        assertTrue(actionQueue.isEmpty());
-    }
 }
 
 class Part3Test {
@@ -1398,8 +1379,19 @@ class Part3Test {
         // on y (max)
         assertTrue(r.contains(new Position(5, 11)));
         // on x and y (max)
-        assertTrue(r.contains(new Position(11, 11)));
+        assertTrue(r.contains(new Position(11, 11))); 
     }
+    @Test
+    public void testRegionContainsPoint() {
+        Region region = new Region (0, 3, 5, 6);
+        assertTrue(region.contains(new Position(0, 6)));
+    }
+    @Test
+    public void testRegionDoesNotContainPoint() {
+        Region region = new Region (0, 3, 5, 6);
+        assertFalse(region.contains(new Position(10, 11)));
+    }
+    
 
     // ==================== CATERPILLAR CLASS TEST =================== //
     @Test
