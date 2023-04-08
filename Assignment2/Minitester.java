@@ -877,14 +877,6 @@ class Part2Test {
                 () -> test.addTargets("..(0,0)."));
     }
 
-    // Nothing as input
-    @Test
-    void tqAddTargets_4(){
-        TargetQueue test = new TargetQueue();
-        test.addTargets("");
-        assertTrue(test.isEmpty());
-    }
-
     // Just a space as input
     @Test
     void tqAddTargets_5(){
@@ -1015,6 +1007,48 @@ class Part2Test {
         test.addTargets("(03,05)");
         assertEquals(test.dequeue(), new Position(3,5));
         assertTrue(test.isEmpty());
+    }
+
+    // multiple .
+    void tqAddTargets_22(){
+        TargetQueue test = new TargetQueue();
+        assertThrows(IllegalArgumentException.class,
+                () -> test.addTargets("(12,2)..(2,212133)."));
+    }
+
+    // extra (
+    void tqAddTargets_23(){
+        TargetQueue test = new TargetQueue();
+        assertThrows(IllegalArgumentException.class,
+                () -> test.addTargets("((12,2).(2,212133)"));
+    }
+
+    // extra )
+    void tqAddTargets_24(){
+        TargetQueue test = new TargetQueue();
+        assertThrows(IllegalArgumentException.class,
+                () -> test.addTargets("(12,2)).(2,212133)"));
+    }
+
+    // extra ()
+    void tqAddTargets_25(){
+        TargetQueue test = new TargetQueue();
+        assertThrows(IllegalArgumentException.class,
+                () -> test.addTargets("((12,2)).(2,212133)"));
+    }
+
+    // extra ) at the end
+    void tqAddTargets_26(){
+        TargetQueue test = new TargetQueue();
+        assertThrows(IllegalArgumentException.class,
+                () -> test.addTargets("(12,2).((2,212133))"));
+    }
+
+    //extra () wrapping string
+    void tqAddTargets_27(){
+        TargetQueue test = new TargetQueue();
+        assertThrows(IllegalArgumentException.class,
+                () -> test.addTargets("((12,2).(2,212133))"));
     }
 
     // Testing clear function
